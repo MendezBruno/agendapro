@@ -1,0 +1,64 @@
+@url = http://localhost:8080
+@username=user
+@password=password
+
+### Token Base64
+# La cadena "user:password" codificada en Base64 es "dXNlcjpwYXNzd29yZA=="
+@auth_token = dXNlcjpwYXNzd29yZA==
+
+POST {{url}}/api/products
+Authorization: Basic {{auth_token}}
+Content-Type: application/json
+
+{
+  "name": "Sample two",
+  "category": "food",
+  "stock": 10,
+  "price": 19.99,
+  "description": "A sample 2 product for testing"
+}
+
+
+### GET
+GET {{url}}/api/products/1
+
+
+### GET
+GET {{url}}/api/products
+
+
+### GET
+GET {{url}}/api/products/name/Sample
+
+
+### PUT
+PUT {{url}}/api/products/1
+Authorization: Basic {{auth_token}}
+Content-Type: application/json
+
+{
+  "id": 2,
+  "name": "Updated Product",
+  "category": "drink",
+  "stock": 15,
+  "price": 29.99,
+  "description": "An updated product for testing"
+}
+
+###DELETE
+DELETE {{url}}/api/products/1
+
+### GET
+GET {{url}}/api/statistics
+Authorization: Basic {{auth_token}}
+Content-Type: application/json
+
+
+
+# curl -u user:password http://localhost:8080/api/statistics
+
+
+
+
+
+
